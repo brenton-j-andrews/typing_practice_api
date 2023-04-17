@@ -1,0 +1,10 @@
+const router = require("express").Router();
+
+
+// POST - Register new user.
+router.get("/", async (req, res) => {
+  console.log(`am i here?`);
+  res.status(200).json("this route was protected!");
+});
+
+module.exports = router;

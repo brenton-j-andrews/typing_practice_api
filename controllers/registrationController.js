@@ -10,7 +10,6 @@ const handleRegistration = async (req, res) => {
   // Check that username and email are not in use already.
   const isExistingUser = await User.findOne({ username : username });
   if (isExistingUser) {
-    console.log(isExistingUser);
     if (isExistingUser.email === email) return res.status(409).json({ "message" : "This email is already associated with an account."});
     return res.status(409).json({ "message" : "This username is already in use, use another one."})
   }

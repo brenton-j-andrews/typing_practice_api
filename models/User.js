@@ -21,6 +21,11 @@ const UserSchema = new mongoose.Schema({
     max: 20
   },
 
+  refreshToken : {
+    type: String,
+    default: ""
+  },
+
   session_stats : [
     {
       words_per_minute : {

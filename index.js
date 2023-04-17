@@ -14,15 +14,16 @@ const MongoDB = process.env.MONGODB_URL;
 
 mongoose.connect(MongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
 
-
 // Routing and middleware.
-const route = require("./routes/routing");
+const registerRoute = require("./routes/registerRoute");
+const authRoute = require("./routes/authRoute");
 
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 
-app.use("/", route);
+app.use("/register", registerRoute);
+app.use("/auth", authRoute)
 
 // Initialize server and listen.
 app.listen(PORT, () => {

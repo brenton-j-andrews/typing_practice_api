@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema({
         type: Number 
       },
       accuracy : {
-        type: Number
+        type: String
       },
       date_of_sesion : {
         type: Date

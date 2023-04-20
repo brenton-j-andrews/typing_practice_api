@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
 const handleRegistration = async (req, res) => {
+  
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) return res.status(400).json({ 'message' : 'Fill out all fields please!'});
@@ -10,8 +11,9 @@ const handleRegistration = async (req, res) => {
   // Check that username and email are not in use already.
   const isExistingUser = await User.findOne({ username : username });
   if (isExistingUser) {
-    if (isExistingUser.email === email) return res.status(409).json({ "message" : "This email is already associated with an account."});
-    return res.status(409).json({ "message" : "This username is already in use, use another one."})
+    if (isExistingUser.email === email) return res.status(409).json({ 
+      "message" : "This email is already associated with an account."});
+    return res.status(409).json({ "message" : "This username is already in use, use another one." })
   }
 
   try {
